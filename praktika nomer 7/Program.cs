@@ -10,6 +10,7 @@ namespace praktika_nomer_7
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello world");
         }
     }
 }

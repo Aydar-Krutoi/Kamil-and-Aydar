@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kamil and Aydar", "Kamil and Aydar\Kamil and Aydar.csproj", "{8E3B232C-76E6-4D74-B63A-DDCA58AE6AFE}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TRYCATCH", "ConsoleApp1\TRYCATCH.csproj", "{B866BA49-7ED8-409E-B4B4-D3472CBF81DA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDF", "ConsoleApp2\PDF.csproj", "{A5290B85-1A4C-4327-ADD8-9C0FB9450BAC}"
@@ -27,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metod", "Metod\Metod.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "praktika nomer 6", "praktika nomer 6\praktika nomer 6.csproj", "{5E8BB8BD-0B7A-497E-8E11-DF72AF84D8CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "praktika nomer 7", "praktika nomer 7\praktika nomer 7.csproj", "{E97AC0FB-1225-4725-80EB-1632C905E4A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rabota s metodami", "Rabota s metodami\Rabota s metodami.csproj", "{98E02601-94C7-4C3C-975A-295A6A02851C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E3B232C-76E6-4D74-B63A-DDCA58AE6AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E3B232C-76E6-4D74-B63A-DDCA58AE6AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E3B232C-76E6-4D74-B63A-DDCA58AE6AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E3B232C-76E6-4D74-B63A-DDCA58AE6AFE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B866BA49-7ED8-409E-B4B4-D3472CBF81DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B866BA49-7ED8-409E-B4B4-D3472CBF81DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B866BA49-7ED8-409E-B4B4-D3472CBF81DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,10 +77,10 @@ Global
 		{5E8BB8BD-0B7A-497E-8E11-DF72AF84D8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E8BB8BD-0B7A-497E-8E11-DF72AF84D8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E8BB8BD-0B7A-497E-8E11-DF72AF84D8CB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E97AC0FB-1225-4725-80EB-1632C905E4A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E97AC0FB-1225-4725-80EB-1632C905E4A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E97AC0FB-1225-4725-80EB-1632C905E4A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E97AC0FB-1225-4725-80EB-1632C905E4A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E02601-94C7-4C3C-975A-295A6A02851C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E02601-94C7-4C3C-975A-295A6A02851C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E02601-94C7-4C3C-975A-295A6A02851C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E02601-94C7-4C3C-975A-295A6A02851C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
