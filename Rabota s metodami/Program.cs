@@ -20,6 +20,7 @@ namespace Rabota_s_metodami
                 Console.WriteLine("5. Статистика");
                 Console.WriteLine("6. Выход");
 
+
                 Console.Write("Выберите действие: ");
                 string choice = Console.ReadLine();
 
