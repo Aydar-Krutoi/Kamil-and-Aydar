@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Dly_seby
 {
@@ -11,6 +12,9 @@ namespace Dly_seby
     {
         static void Main(string[] args)
         {
+            //    int numb = Convert.ToInt32(Console.ReadLine());
+            //    int summa = numb * numb;
+            //    Console.WriteLine(summa);
             //string word = "Hello";
             //word += "!!!!";
 
@@ -178,6 +182,99 @@ namespace Dly_seby
             //string modified = original.Remove(5, 7); // "Hello!"
             //Console.WriteLine(modified);
 
+            //   int input = Convert.ToInt32(Console.ReadLine());
+
+            //   string[] str = Console.ReadLine().Split(' ');
+
+            //   int minArray = 0;//Значения индекса
+
+            //   int znach = Convert.ToInt32(str[0]);
+
+            //    for(int i = 1; i < str.Length; i++)
+            //    {
+            //        if (znach > Convert.ToInt32(str[i]))
+            //        {
+            //            znach = Convert.ToInt32(str[i]);
+
+            //        }
+            //    }
+
+            //    int[] numb = new int[str.Length];
+
+            //    for(int i = 0;  i < str.Length; i++)
+            //    {
+            //        numb[i] = Convert.ToInt32(str[i]) - znach;
+
+            //    }
+            //    for(int i = 0;i < numb.Length; i++)
+            //    {
+            //        Console.Write(numb[i] + " ");
+            //    }
+
+            //    Console.ReadLine();
+            //} int numb = Convert.ToInt32(Console.ReadLine());
+            //int numb = Convert.ToInt32(Console.ReadLine());
+
+            //int FirstNumb = numb  10;
+
+            //int SecondNumb = numb / 10;
+
+            //int SecondNumb2 = SecondNumb % 10;
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[,] matrix = new int[n, n];
+            //for (int i = 0; i < n; i++)
+            //{
+            //    for (int j = 0; j < n; j++)
+            //    {
+            //        if(i + 1 == n - j)
+            //        {
+            //            matrix[i, j] = 1;
+            //        }
+            //        else if(i + 1 < n - j)
+            //        {
+            //            matrix[i,j] = 0;
+            //        }
+            //        else { matrix[i,j] = 2; }
+
+
+
+            //    }
+            //}
+            bool tf = true;
+
+            for (int i = 0; i < n; i++)
+            {
+                string[] s = Console.ReadLine().Split(' ');
+
+                for (int j = 0; j < n; j++)
+                {
+                    matrix[i,j] = Convert.ToInt32(s[j]);
+                }
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if (matrix[i,j] != matrix[j, i])
+                    {
+                        tf = false;
+                    }
+                }
+            }
+            Console.WriteLine(tf ? "YES":"NO");
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write(matrix[i,j] + " ");
+                }
+                Console.WriteLine();
+            
+            }
         }
+        
     }
+
 }

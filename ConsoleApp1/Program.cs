@@ -11,17 +11,16 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите число:");
-            string input = Console.ReadLine();
-            try
-            {
-                int number = Convert.ToInt32(input);
-                Console.WriteLine("Вы ввели число: " +  number);
-            }
-            catch(FormatException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-        }   
+            //string input = Console.ReadLine();
+            //try
+            //{
+            //    int number = Convert.ToInt32(input);
+            //    Console.WriteLine("Вы ввели число: " +  number);
+            //}
+            //catch(FormatException ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+        }
     }
 }

@@ -20,7 +20,6 @@ namespace Rabota_s_metodami
                 Console.WriteLine("5. Статистика");
                 Console.WriteLine("6. Выход");
 
-
                 Console.Write("Выберите действие: ");
                 string choice = Console.ReadLine();
 
@@ -30,13 +29,18 @@ namespace Rabota_s_metodami
                         Console.Write("Введите категорию (Доход, Продукты, Транспорт, Развлечения): ");
                         string category = Console.ReadLine();
                         Console.Write("Введите сумму: ");
-                        if (double.TryParse(Console.ReadLine(), out double amount))
+                        try
                         {
+                            double amount = Convert.ToDouble(Console.ReadLine());
                             AddTransaction(category, amount);
                         }
-                        else
+                        catch (FormatException)
                         {
                             Console.WriteLine("Некорректный ввод суммы.");
+                        }
+                        catch (OverflowException)
+                        {
+                            Console.WriteLine("Введено слишком большое или маленькое число.");
                         }
                         break;
                     case "2":
@@ -63,75 +67,166 @@ namespace Rabota_s_metodami
 
         static Dictionary<string, List<double>> finances = new Dictionary<string, List<double>>();
 
-            public static void AddTransaction(string category, double amount)
+        public static void AddTransaction(string category, double amount)
+        {
+            if (!finances.ContainsKey(category))
             {
-                if (!finances.ContainsKey(category))
+                finances[category] = new List<double>();
+            }
+            finances[category].Add(amount);
+            Console.WriteLine("Запись добавлена.");
+        }
+            
+        public static void PrintFinanceReport()
+        {
+            Console.WriteLine("Финансовый отчет:");
+            foreach (var category in finances)
+            {
+                double sum = 0;
+                foreach (var amount in category.Value)
                 {
-                    finances[category] = new List<double>();
+                    sum += amount;
                 }
-                finances[category].Add(amount);
-                Console.WriteLine("Запись добавлена.");
+                Console.WriteLine($"{category.Key}: {sum} руб. - {category.Value.Count} операций");
             }
+        }
 
-            public static void PrintFinanceReport()
+        public static double CalculateBalance()
+        {
+            double income = 0;
+            double expenses = 0;
+
+            foreach (var category in finances)
             {
-                Console.WriteLine("Финансовый отчет:");
-                foreach (var category in finances)
+                if (category.Key.ToLower().Contains("доход"))
                 {
-                    Console.WriteLine($"{category.Key}: {category.Value.Sum()} руб. - {category.Value.Count} операций");
+                    foreach (var amount in category.Value)
+                    {
+                        income += amount;
+                    }
+                }
+                else
+                {
+                    foreach (var amount in category.Value)
+                    {
+                        expenses += amount;
+                    }
                 }
             }
 
-            public static double CalculateBalance()
+            return income - expenses;
+        }
+
+        public static double GetAverageExpense(string category)
+        {
+            if (finances.ContainsKey(category))
             {
-                double income = finances.Where(kv => kv.Key.ToLower().Contains("доход")).Sum(kv => kv.Value.Sum());
-                double expenses = finances.Where(kv => !kv.Key.ToLower().Contains("доход")).Sum(kv => kv.Value.Sum());
-                return income - expenses;
-            }
-
-            public static double GetAverageExpense(string category)
-            {
-                return finances.ContainsKey(category) ? finances[category].Average() : 0;
-            }
-
-            public static double PredictNextMonthExpenses()
-            {
-                return finances.Where(kv => !kv.Key.ToLower().Contains("доход")).Sum(kv => kv.Value.Sum());
-            }
-
-            public static void PrintStatistics()
-            {
-                double totalExpenses = finances.Where(kv => !kv.Key.ToLower().Contains("доход")).Sum(kv => kv.Value.Sum());
-                Console.WriteLine($"Общая сумма расходов: {totalExpenses} руб.");
-
-                var mostExpensiveCategory = finances
-                    .Where(kv => !kv.Key.ToLower().Contains("доход"))
-                    .OrderByDescending(kv => kv.Value.Sum())
-                    .FirstOrDefault();
-
-                if (mostExpensiveCategory.Key != null)
+                double sum = 0;
+                foreach (var amount in finances[category])
                 {
-                    Console.WriteLine($"Самая затратная категория: {mostExpensiveCategory.Key} ({mostExpensiveCategory.Value.Sum()} руб.)");
+                    sum += amount;
                 }
+                return sum / finances[category].Count;
+            }
+            return 0;
+        }
 
-                var mostFrequentCategory = finances
-                   .Where(kv => !kv.Key.ToLower().Contains("доход"))
-                   .OrderByDescending(kv => kv.Value.Count)
-                   .FirstOrDefault();
+        public static double PredictNextMonthExpenses()
+        {
+            double totalExpenses = 0;
 
-                if (mostFrequentCategory.Key != null)
+            foreach (var category in finances)
+            {
+                if (!category.Key.ToLower().Contains("доход"))
                 {
-                    Console.WriteLine($"Самая частая категория: {mostFrequentCategory.Key} ({mostFrequentCategory.Value.Count} операций)");
+                    foreach (var amount in category.Value)
+                    {
+                        totalExpenses += amount;
+                    }
                 }
-                Console.WriteLine("Процентное распределение расходов:");
-                foreach (var category in finances.Where(kv => !kv.Key.ToLower().Contains("доход")))
+            }
+
+            return totalExpenses;
+        }
+
+        public static void PrintStatistics()
+        {
+            double totalExpenses = 0;
+
+            foreach (var category in finances)
+            {
+                if (!category.Key.ToLower().Contains("доход"))
                 {
-                    double categoryTotal = category.Value.Sum();
+                    foreach (var amount in category.Value)
+                    {
+                        totalExpenses += amount;
+                    }
+                }
+            }
+
+            Console.WriteLine($"Общая сумма расходов: {totalExpenses} руб.");
+
+            string mostExpensiveCategory = null;
+            double maxExpense = 0;
+
+            foreach (var category in finances)
+            {
+                if (!category.Key.ToLower().Contains("доход"))
+                {
+                    double categorySum = 0;
+                    foreach (var amount in category.Value)
+                    {
+                        categorySum += amount;
+                    }
+
+                    if (categorySum > maxExpense)
+                    {
+                        maxExpense = categorySum;
+                        mostExpensiveCategory = category.Key;
+                    }
+                }
+            }
+
+            if (mostExpensiveCategory != null)
+            {
+                Console.WriteLine($"Самая затратная категория: {mostExpensiveCategory} ({maxExpense} руб.)");
+            }
+
+            string mostFrequentCategory = null;
+            int maxOperations = 0;
+
+            foreach (var category in finances)
+            {
+                if (!category.Key.ToLower().Contains("доход"))
+                {
+                    if (category.Value.Count > maxOperations)
+                    {
+                        maxOperations = category.Value.Count;
+                        mostFrequentCategory = category.Key;
+                    }
+                }
+            }
+
+            if (mostFrequentCategory != null)
+            {
+                Console.WriteLine($"Самая частая категория: {mostFrequentCategory} ({maxOperations} операций)");
+            }
+
+            Console.WriteLine("Процентное распределение расходов:");
+            foreach (var category in finances)
+            {
+                if (!category.Key.ToLower().Contains("доход"))
+                {
+                    double categoryTotal = 0;
+                    foreach (var amount in category.Value)
+                    {
+                        categoryTotal += amount;
+                    }
+
                     double percentage = (categoryTotal / totalExpenses) * 100;
                     Console.WriteLine($"{category.Key}: {categoryTotal} руб. ({percentage:F2}%)");
                 }
-
             }
-       
+        }
     }
 }

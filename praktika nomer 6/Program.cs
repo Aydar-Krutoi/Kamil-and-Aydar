@@ -9,232 +9,250 @@ namespace praktika_nomer_6
 {
     internal class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    var prog = new Program();
-        //    Add();
+        static void Main(string[] args)
+        {
+            //Zadanie 1
+            Calculator();
 
-        //}
-        ////zadanie 1
-        //public static void Add()
-        //{
-        //    bool ar = true;
-        //    double a, b;
-        //    Console.WriteLine("Числа: ");
-        //    double y = Convert.ToInt32(Console.ReadLine());
-        //    double x = Convert.ToInt32(Console.ReadLine());
-        //    a = y; b = x;
-        //    while (ar)
-        //    {
-        //        Console.WriteLine("Выберите действие: (1 - Сложение, 2 - Вычитание, 3 - Умножение, 4 - Деление, 0 - Выход) ");
-        //        double p = Convert.ToInt32(Console.ReadLine());
-        //        if (p == 1)
-        //        {
-        //            a = a + b;
-        //            Console.WriteLine("Ответ: " + a);
-        //            a = y;
-        //        }
-        //        else if (p == 2)
-        //        {
-        //            a = a - b;
-        //            Console.WriteLine("Ответ: " + a);
-        //            a = y;
-        //        }
-        //        else if (p == 3)
-        //        {
-        //            a = a * b;
-        //            Console.WriteLine("Ответ: " + a);
-        //            a = y;
-        //        }
-        //        else if (p == 4)
-        //        {
-        //            a = a / b;
-        //            Console.WriteLine("Ответ: " + a);
-        //            a = y;
-        //        }
-        //        else if (p == 0)
-        //        {
-        //            ar = false;
-        //        }
-        //    }
+            // Zadanie 2
+            Console.WriteLine("Введите первое число: ");
+            int num1 = (Convert.ToInt32(Console.ReadLine()));
 
-        //}
+            Console.WriteLine("Введите второе число: ");
+            int num2 = (Convert.ToInt32(Console.ReadLine()));
 
+            int max = Max(num1, num2);
+            if (Max(num1, num2) == 0)
+            {
+                Console.WriteLine("Они равны");
+            }
+            int min = Min(num1, num2);
+            if (Min(num1, num2) == 0)
+            {
+                Console.WriteLine("Они равны");
+            }
+            
 
-        ////zadanie nomer 2
-        //static void Main(string[] args)
-        //{
-        //    var result = Add();
-        //    Console.WriteLine($"Минимальное значение: {result.min}, Максимальное значение: {result.max}");
-        //}
+            Console.WriteLine($"Максимальное:  {max}, минимальное:  {min} ");
 
-        //public static (int min, int max) Add()
-        //{
-        //    int[] numbers = new int[] { 1, 3, 9, 30, 22, 15 };
-        //    int min = numbers.Min();
-        //    int max = numbers.Max();
+            // Zadanie 3
+            string[] testStrings = { "level", "hello", "radar", "world", "madam" };
+            foreach (var str in testStrings)
+            {
+                bool isPalindrome = IsPalindrome(str);
+                Console.WriteLine($"Строка {str} является палиндромом: {isPalindrome}");
+            }
 
-        //    return (min, max);
-        //}
-        ////zadanie nomer 3
-        //static void Main(string[] args)
-        //{
-        //    string[] testStrings = { "level", "hello", "radar", "world", "madam" };
+            // Zadanie 4
+            Console.WriteLine("Введите число для вычисления факториала:");
+            int n = Convert.ToInt32(Console.ReadLine());
+            if (n < 0)
+            {
+                Console.WriteLine("Факториал отрицательного числа не определен.");
+            }
+            else
+            {
+                int result = Factorial(n);
+                Console.WriteLine($"Факториал {n} равен {result}.");
+            }
 
-        //    foreach (var str in testStrings)
-        //    {
-        //        bool isPalindrome = IsPalindrome(str);
-        //        Console.WriteLine($"Строка {str} является палиндромом: {isPalindrome}");
-        //    }
-        //}
+            // Zadanie 5
+            Console.WriteLine("Введите три числа для вычисления среднего арифметического:");
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int c = Convert.ToInt32(Console.ReadLine());
+            double average = Average(a, b, c);
+            Console.WriteLine($"Среднее арифметическое: {average}");
 
-        //public static bool IsPalindrome(string str)
-        //{
-        //    str = str.ToLower().Replace(" ", string.Empty);////Убирает запятую
+            // Zadanie 6
+            Console.WriteLine(FindChar("hello", 'o'));
+            Console.WriteLine(FindChar("hello", 'a'));
 
-        //    char[] charArray = str.ToCharArray();
-        //    Array.Reverse(charArray);//переварачивает слово
-        //    string reversedStr = new string(charArray);
+            // Zadanie 7
+            string password = GeneratePassword(6);
+            Console.WriteLine(password);
 
-        //    return str == reversedStr;
-        //}
+            // Zadanie 8
+            double celsius = 0;
+            double fahrenheit = CelsiusToFahrenheit(celsius);
+            Console.WriteLine($"{celsius} C = {fahrenheit} F");
 
-        //// zadanie nomer 4
-        //public static void Main(string[] args)
-        //{
-        //    Console.WriteLine("Введите число для вычисления факториала:");
-        //    int n = Convert.ToInt32(Console.ReadLine());
+            double fahrenheit2 = 32;
+            double celsius2 = FahrenheitToCelsius(fahrenheit2);
+            Console.WriteLine($"{fahrenheit2} F = {celsius2} C");
 
-        //    if (n < 0)
-        //    {
-        //        Console.WriteLine("Факториал отрицательного числа не определен.");
-        //    }
-        //    else
-        //    {
-        //        int result = Factorial(n);
-        //        Console.WriteLine($"Факториал {n} равен {result}.");
-        //    }
-        //}
+            // Zadanie 9
+            string sentence = "Hello world!";
+            string reversedSentence = ReverseWords(sentence);
+            Console.WriteLine(reversedSentence);
 
-        //public static int Factorial(int n)
-        //{
-        //    int result = 1;
-        //    for (int i = 1; i <= n; i++)
-        //    {
-        //        result *= i;
-        //    }
-        //    return result;
-        //}
+            // Zadanie 10
+            int num = 5;
+            MultiplicationTable(num);
+        }
 
-        //zadanie nomer 5
-        //public static void Main(string[] args)
-        //{
-        //    Console.WriteLine("Введите три числа для вычисления среднего арифметического:");
+        // Zadanie 1
+        public static void Calculator()
+        {
+            bool ar = true;
+            double a, b;
+            Console.WriteLine("Введите два числа: ");
+            double y = Convert.ToDouble(Console.ReadLine());
+            double x = Convert.ToDouble(Console.ReadLine());
+            a = y; b = x;
+            while (ar)
+            {
+                Console.WriteLine("Выберите действие: (1 - Сложение, 2 - Вычитание, 3 - Умножение, 4 - Деление, 0 - Выход) ");
+                double p = Convert.ToDouble(Console.ReadLine());
+                if (p == 1)
+                {
+                    a = a + b;
+                    Console.WriteLine("Ответ: " + a);
+                }
+                else if (p == 2)
+                {
+                    a = a - b;
+                    Console.WriteLine("Ответ: " + a);
+                }
+                else if (p == 3)
+                {
+                    a = a * b;
+                    Console.WriteLine("Ответ: " + a);
+                }
+                else if (p == 4)
+                {
+                    if (b != 0)
+                    {
+                        a = a / b;
+                        Console.WriteLine("Ответ: " + a);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка: деление на ноль.");
+                    }
+                }
+                else if (p == 0)
+                {
+                    ar = false;
+                }
+                else
+                {
+                    Console.WriteLine("Неверный выбор.");
+                }
+            }
+        }
 
-        //    Console.Write("Первое число: ");
-        //    int a = Convert.ToInt32(Console.ReadLine());
+        // Zadanie 2
+        public static int Max(int num1, int num2)
+        {
+            if (num1 > num2)
+            {
+                return num1;
+            }
+            else
+            {
+                return num2;
+            }
+        }
 
-        //    Console.Write("Второе число: ");
-        //    int b = Convert.ToInt32(Console.ReadLine());
+        public static int Min(int num1, int num2)
+        {
+            if (num1 < num2)
+            {
+                return num1;
+            }
+            else if (num2 < num1)
+            {
+                return num2;
+            }
+            else
+            {
+                return 0;
+            }
+        }
 
-        //    Console.Write("Третье число: ");
-        //    int c = Convert.ToInt32(Console.ReadLine());
+        // Zadanie 3
+        public static bool IsPalindrome(string str)
+        {
+            str = str.ToLower().Replace(" ", string.Empty);
+            char[] charArray = str.ToCharArray();
+            Array.Reverse(charArray);
+            string reversedStr = new string(charArray);
+            return str == reversedStr;
+        }
 
-        //    double average = Average(a, b, c);//Average метод который считает средн ариф знач 
-        //    Console.WriteLine($"Среднее арифметическое: {average}");
-        //}
+        // Zadanie 4
+        public static int Factorial(int n)
+        {
+            int result = 1;
+            for (int i = 1; i <= n; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
 
-        //public static double Average(int a, int b, int c)
-        //{
-        //    return (a + b + c) / 3.0;
-        //}
+        // Zadanie 5
+        public static double Average(int a, int b, int c)
+        {
+            return (a + b + c) / 3.0;
+        }
 
-        //zadanie nomer 6
-        //static void Main(string[] args)
-        //{
-        //    Console.WriteLine(FindChar("hello", 'o')); 
-        //    Console.WriteLine(FindChar("hello", 'a')); 
-        //}
+        // Zadanie 6
+        public static int FindChar(string text, char c)
+        {
+            return text.IndexOf(c);
+        }
 
-        //public static int FindChar(string text, char c)
-        //{
-        //    return text.IndexOf(c);
-        //}
+        // Zadanie 7
+        public static string GeneratePassword(int length)
+        {
+            Random random = new Random();
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            char[] password = new char[length];
 
-        // zadanie 7
-        //static void Main(string[] args)
-        //{
-        //    string password = GeneratePassword(6);
-        //    Console.WriteLine(password);
-        //}
+            for (int i = 0; i < length; i++)
+            {
+                password[i] = chars[random.Next(chars.Length)];
+            }
 
-        //public static string GeneratePassword(int length)
-        //{
-        //    Random random = new Random();
+            return new string(password);
+        }
 
-        //    char[] password = new char[length];
+        // Zadanie 8
+        public static double CelsiusToFahrenheit(double c)
+        {
+            return c * 9 / 5 + 32;
+        }
 
-        //    for (int i = 0; i < length; i++)
-        //    {
-        //        password[i] = (char)('0' + random.Next(0, 10));
-        //    }
+        public static double FahrenheitToCelsius(double f)
+        {
+            return (f - 32) * 5 / 9;
+        }
 
-        //    return new string(password);
-        //}
+        // Zadanie 9
+        public static string ReverseWords(string sentence)
+        {
+            string[] words = sentence.Split(' ');
 
-        //zadanie 8
-        //static void Main(string[] args)
-        //{
-        //    double celsius = 0;
-        //    double fahrenheit = CelsiusToFahrenheit(celsius);
-        //    Console.WriteLine($"{celsius} C = {fahrenheit} F"); 
+            for (int i = 0; i < words.Length / 2; i++)
+            {
+                string temp = words[i];
+                words[i] = words[words.Length - 1 - i];
+                words[words.Length - 1 - i] = temp;
+            }
 
-        //    double fahrenheit2 = 32;
-        //    double celsius2 = FahrenheitToCelsius(fahrenheit2);
-        //    Console.WriteLine($"{fahrenheit2} F = {celsius2} C"); 
-        //}
+            return string.Join(" ", words);
+        }
 
-        //public static double CelsiusToFahrenheit(double c)
-        //{
-        //    return c * 9 / 5 + 32;
-        //}
-
-        //public static double FahrenheitToCelsius(double f)
-        //{
-        //    return (f - 32) * 5 / 9;
-        //}
-
-        //zadanie 9
-        //static void Main(string[] args)
-        //{
-        //    string sentence = "Hello world!";
-        //    string reversedSentence = ReverseWords(sentence);
-        //    Console.WriteLine(reversedSentence);
-        //}
-
-        //public static string ReverseWords(string sentence)
-        //{
-        //    string[] words = sentence.Split(' ');
-
-        //    Array.Reverse(words);
-
-        //    return string.Join(" ", words);
-        //}
-
-        // zadanie 10
-        //static void Main(string[] args)
-        //{
-        //    int n = 5;
-        //    MultiplicationTable(n);
-        //}
-
-        //public static void MultiplicationTable(int n)
-        //{
-        //    for (int i = 1; i <= 10; i++)
-        //    {
-        //        Console.WriteLine($"{n} x {i} = {n * i}");
-        //    }
-        //}
+        // Zadanie 10
+        public static void MultiplicationTable(int n)
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine($"{n} x {i} = {n * i}");
+            }
+        }
 
     }
 }  

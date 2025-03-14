@@ -12,7 +12,7 @@ namespace Game
     {
         static void Main(string[] args)
         {
-
+    
             int health = 100;
             int potions = 3;
             int gold = 0;
